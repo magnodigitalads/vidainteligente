@@ -2,38 +2,45 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Saúde com tecnologia — Vida Inteligente 360º</title>
   <meta name="description" content="Apps de sono, meditação e smartwatches ajudam a monitorar e melhorar hábitos — com pequenas ações que transformam seu dia a dia.">
-  <meta property="og:title" content="Saúde com tecnologia: o futuro do bem-estar começa agora">
-  <meta property="og:description" content="Apps de sono, meditação e smartwatches ajudam a monitorar e melhorar hábitos — com pequenas ações que transformam seu dia a dia.">
-  <meta property="og:image" content="imagemcapa/saude.jpg">
-  <meta property="og:type" content="article">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+
+  <header class="site-header" role="banner">
     <div class="container">
       <h1>Vida Inteligente 360º</h1>
-      <p>Equilíbrio, tecnologia e bem-estar em um só lugar 🌿</p>
+      <p>Equilíbrio, tecnologia e bem-estar em um só lugar </p>
     </div>
   </header>
 
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Navegação principal">
     <div class="container">
       <a href="index.html">Início</a>
-      <a href="#">Produtividade</a>
-      <a href="#">Finanças</a>
-      <a href="#">Saúde</a>
-      <a href="#">Sobre</a>
+      <a href="produtividade.html">Produtividade</a>
+      <a href="financas.html">Finanças</a>
+      <a href="saude.html" aria-current="page">Saúde</a>
+     
     </div>
   </nav>
 
-  <main class="container">
+  <main id="main-content" class="container">
+    <nav class="breadcrumbs" aria-label="Você está em">
+      <div class="container">
+        <a href="index.html">Início</a>
+        <span aria-hidden="true">·</span>
+        <a href="saude.html">Saúde</a>
+      </div>
+    </nav>
+
     <article class="post-full">
       <img src="imagemcapa/saude.png" alt="Mulher praticando ioga com smartwatch ao ar livre" width="1200" height="630" loading="lazy">
-      <h1>🩺 Saúde com tecnologia: o futuro do bem-estar começa agora</h1>
-
+      <h1> Saúde com tecnologia: o futuro do bem-estar começa agora</h1>
+      
       <p>Cuidar da saúde é tipo trocar o óleo do carro — se você ignora, uma hora o motor pifa. Só que manter corpo e mente em dia nem sempre é fácil, principalmente pra quem tem uma rotina puxada, tipo 6X1. A boa notícia é que a tecnologia está do nosso lado nessa missão.</p>
 
       <p>Hoje, dá pra ter um verdadeiro “personal trainer digital” no bolso. Apps como Sleep Cycle e Pillow monitoram seu sono e dizem se você está descansando direito. O MyFitnessPal ajuda a montar uma alimentação equilibrada sem precisar virar nutricionista. E o WaterMinder? Ele te lembra de beber água (porque, sejamos honestos, a gente sempre esquece).</p>
@@ -44,10 +51,8 @@
 
       <p>Então, se a tecnologia está aí pra facilitar tudo, por que não deixar ela cuidar um pouquinho da gente também? Com informação na palma da mão, fica muito mais fácil viver bem. E convenhamos: corpo saudável, mente tranquila e energia de sobra… não tem aplicativo que supere essa sensação.</p>
 
-      <nav class="post-nav">
-        <a href="financas.html">← Finanças</a>
-        <span style="margin:0 12px;color:#888;">·</span>
-        <a href="index.html">Início →</a>
+      <nav class="post-nav" style="margin-top:18px;">
+        <a href="financas.html">← Finanças</a> · <a href="index.html">Início →</a>
       </nav>
 
       <nav style="margin-top:18px;">
@@ -56,9 +61,9 @@
     </article>
   </main>
 
-  <footer class="site-footer">
+ <footer class="site-footer">
     <div class="container">
-      <p>© 2025 Vida Inteligente 360º — Site criado por <a href="https://magnodigitalads.com.br" target="_blank" rel="noopener noreferrer">magnodigitalads.com.br</a></p>
+      <p>© 2025 Vida Inteligente 360º — Site criado por <a href="https://github.com/magnodigitalads" target="_blank" rel="noopener noreferrer">magnodigitalads.com.br</a></p>
     </div>
   </footer>
 </body>

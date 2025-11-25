@@ -4,76 +4,175 @@
   --verde-floresta:#255941;
   --verde-suave:#618C78;
   --preto-acinzentado:#0D0D0D;
+  --cinza-claro:#f6f8f7;
   --branco:#FFFFFF;
+  --max-width:1200px;
+  --content-max-width:780px;
+  --radius:10px;
+  --transition-fast:0.18s;
 }
 
-/* base */
+/* Reset / base */
 *{box-sizing:border-box}
+html,body{height:100%}
 body{
-  font-family:'Inter',sans-serif;
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
   margin:0;
   color:var(--preto-acinzentado);
   background:var(--branco);
-  line-height:1.6;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size:15px;
 }
-.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
 
-/* header/nav/footer */
-.site-header{background:var(--verde-escuro);color:var(--branco);padding:30px 0;text-align:center}
-.site-header h1{font-family:'Poppins',sans-serif;font-style:italic;font-weight:600;margin:0}
-.navbar{background:var(--verde-floresta);padding:10px 0}
-.navbar .container a{color:var(--branco);text-decoration:none;margin-right:18px;font-family:'Poppins',sans-serif;font-weight:600}
-.navbar .container a:hover{color:var(--verde-suave)}
-.site-footer{background:var(--verde-floresta);color:var(--branco);text-align:center;padding:15px 0;margin-top:40px}
+/* Header e Nav (padronizados) */
 
-/* grid de posts (cards) */
+
+header.site-header, header {
+  background: linear-gradient(180deg, var(--verde-escuro), var(--verde-floresta));
+  color: var(--branco);
+  text-align: center;
+  padding: 36px 0;
+}
+.site-header h1{
+  font-family:'Poppins',sans-serif;
+  font-weight:600;
+  font-style:italic;
+  margin:0;
+  font-size:25px;
+}
+.site-header p{margin:8px 0 0;color:rgba(255,255,255,0.92);font-size:0.98rem}
+
+/* Navbar sempre abaixo do header */
+.navbar{
+  background:var(--verde-floresta);
+  padding:10px 0;
+  box-shadow:0 2px 0 rgba(0,0,0,0.03);
+  position:relative;
+  z-index:20;
+}
+.navbar .container{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.navbar a{
+  color:var(--branco);
+  text-decoration:none;
+  font-family:'Poppins',sans-serif;
+  font-weight:600;
+  padding:8px 10px;border-radius:6px;
+}
+.navbar a:hover, .navbar a:focus{background:rgba(255,255,255,0.04);outline:none}
+.navbar a[aria-current="page"]{background:rgba(0,0,0,0.06)}
+
+/* Layout principal */
+main{display:flex;gap:32px;margin:36px 0;align-items:flex-start;flex-wrap:wrap}
+
+/* Grid de posts (cards) */
 .posts-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:28px;
   align-items:start;
-  margin:28px 0;
+  flex:3;
 }
 .post-card{
-  background:#fff;
-  border-radius:10px;
+  background:var(--branco);
+  border-radius:var(--radius);
   box-shadow:0 6px 18px rgba(2,10,8,0.04);
   overflow:hidden;
-  transition:transform .18s ease, box-shadow .18s ease;
-  display:flex;
-  flex-direction:column;
+  transition:transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+  display:flex;flex-direction:column;
+  min-height:360px;
 }
-.post-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,10,8,0.08)}
-.post-card img{width:100%;height:auto;display:block}
+.post-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(2,10,8,0.08)}
+.post-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  display:block;
+}
 .card-body{padding:16px 18px;flex:1;display:flex;flex-direction:column}
 .post-card h3{font-family:'Poppins',sans-serif;font-weight:600;margin:0 0 8px;color:var(--verde-floresta);font-size:1.05rem}
-.excerpt{color:#334;flex:1;margin:0 0 12px}
-.read-more{color:var(--verde-medio);font-weight:600;align-self:flex-start}
-
-/* acessibilidade do link inteiro */
+.excerpt{color:#333;flex:1;margin:0 0 12px}
+.read-more{color:var(--verde-medio);font-weight:700;display:inline-block;padding:8px 12px;border-radius:8px}
 .card-link{text-decoration:none;color:inherit;display:flex;flex-direction:column;height:100%}
+.card-link:focus .read-more, .post-card:hover .read-more{background:var(--verde-suave);color:var(--branco)}
 
-/* sidebar */
-.sidebar{margin-top:8px}
-.widget{background:#f6f8f7;padding:18px;border-radius:8px;margin-bottom:22px}
+/* Sidebar */
+.sidebar{width:300px;flex:1}
+@media (max-width:1100px){ .sidebar{width:320px} }
+@media (min-width:1000px){ .sidebar{position:sticky;top:92px;align-self:start} }
+.widget{background:var(--cinza-claro);padding:18px;border-radius:8px;margin-bottom:22px}
 .widget h3{font-family:'Poppins',sans-serif;font-style:italic;color:var(--verde-floresta);margin-top:0}
 
-/* post completo */
-.post-full img{width:100%;border-radius:8px;margin-bottom:18px}
-.post-full h1{font-family:'Poppins',sans-serif;font-weight:600;color:var(--verde-floresta);margin-top:0}
-.post-full p{margin:0 0 14px}
+/* Post completo */
+.post-full{
+  flex:3;
+  max-width:var(--content-max-width);
+  margin: auto;
+  background:var(--branco);
+  padding:28px;
+  border-radius:8px;
+  box-shadow:0 8px 24px rgba(2,10,8,0.04);
+}
+.post-full img{width:100%;height:auto;border-radius:8px;margin-bottom:18px;object-fit:cover}
+.post-full h1{font-family:'Poppins',sans-serif;font-weight:600;color:var(--verde-floresta);margin-top:0;font-size:1.5rem}
+.post-full p{margin:0 0 16px;color:#222;line-height:1.8;font-size:1rem}
+.meta{color:#666;font-size:0.92rem;margin:6px 0 18px}
 
-/* small helpers */
+/* Footer */
+.site-footer{background:var(--verde-floresta);color:var(--branco);text-align:center;padding:18px 0;margin-top:40px}
+.site-footer a{color:var(--verde-suave);text-decoration:none}
+
+/* Helpers e acessibilidade */
 .skip-link{position:absolute;left:-9999px;top:auto}
-.post-nav{margin-top:24px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 
-/* responsividade */
+/* Forçar body branco e remover wrappers com background */
+body{background:var(--branco)}
+.page-wrapper, .site-wrapper{background:transparent !important}
+
+/* Responsividade */
 @media (max-width:900px){
-  .posts-grid{gap:20px}
-  .navbar .container a{display:inline-block;margin:8px 10px}
-  .container{padding:0 14px}
+  main{flex-direction:column}
+  .posts-grid{grid-template-columns:1fr;gap:18px}
+  .post-card{min-height:auto}
+  .navbar .container{justify-content:center}
+  .site-header h1{font-size:1.35rem}
 }
 @media (max-width:600px){
-  .site-header h1{font-size:1.6rem}
-  .post-card h3{font-size:1rem}
+  body{font-size:15px}
+  .post-card img{height:160px}
+  .post-full h1{font-size:1.25rem}
 }
+
+/* Forçar tamanho base consistente em todas as páginas */
+html, body {
+  font-size: 16px !important;    /* base consistente (padrão que você usou) */
+}
+
+/* Garantir que containers de post herdem a base e usem rem adequadamente */
+main, .container, .post-full, .posts-grid, .post-card, .card-body {
+  font-size: 1rem !important;    /* 1rem = 16px */
+  line-height: 1.7 !important;
+}
+
+/* Parágrafos de post com tamanho legível */
+.post-full p, .post-full li, .excerpt {
+  font-size: 1rem !important;    /* garante parágrafos do mesmo tamanho */
+  color: #222;
+}
+
+/* Ajuste de headings se necessário */
+.site-header h1 { font-size: 3rem !important; }
+.post-full h1 { font-size: 1.5rem !important; }
+
+
+/* Remove possíveis transforms que reduzam visualmente */
+.post-full, .post-card, .page-wrapper, .site-wrapper {
+  transform: none !important;
+  zoom: 1 !important;
+}
+
+/* Caso alguma regra use percentual (ex.: 90%), isso neutraliza */
+* { -webkit-text-size-adjust: 100%; }
